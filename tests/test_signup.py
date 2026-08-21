@@ -1,5 +1,5 @@
 import pytest
-from pages.home_page import HomePage
+from pages.home_page import homePage
 pytestmark = pytest.mark.ui
 
 class TestSignup:
@@ -37,11 +37,11 @@ class TestSignup:
 
         signup_page.preencher_cadastro_completo(dados_cadastro)
         assert "/account_created" in signup_page.page.url
-        assert signup_page.cadastro_realizado_com_sucesso()
+        assert signup_page.cadastro_realizado_com_sucesso() 
 
         signup_page.continuar()
 
-        home = HomePage(signup_page.page)
+        home = homePage(signup_page.page)
         home.logout()
     
         signup_page.goto("/login")

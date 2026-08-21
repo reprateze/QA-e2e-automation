@@ -5,8 +5,9 @@ import pytest
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 from utils.data_loader import carregar_json
-from pages.home_page import HomePage
+from pages.home_page import homePage
 from pages.signup_page import SignupPage
+from pages.login_page import LoginPage
 
 
 load_dotenv()
@@ -30,7 +31,7 @@ def page(browser):
 
 @pytest.fixture
 def home_page(page):
-    home = HomePage(page)
+    home = homePage(page)
     home.goto("/")
     return home
 
@@ -48,5 +49,11 @@ def dados_cadastro():
 def email_unico():
     email = f"renan.teste.{uuid.uuid4().hex[:8]}@example.com"
     return email
+
+@pytest.fixture
+def login_page(page):
+    login = LoginPage(page)
+    login.goto("/login")
+    return login
     
 
