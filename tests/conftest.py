@@ -8,7 +8,8 @@ from utils.data_loader import carregar_json
 from pages.home_page import homePage
 from pages.signup_page import SignupPage
 from pages.login_page import LoginPage
-
+from utils.config import FIXED_USER_EMAIL, FIXED_USER_PASSWORD
+from pages.products_page import ProductPage
 
 load_dotenv()
 
@@ -56,4 +57,19 @@ def login_page(page):
     login.goto("/login")
     return login
     
+@pytest.fixture
+def logged_home_page(page):
+    home = homePage(page)
+    home.goto("/login")
 
+    login = LoginPage(page)
+    login.login(FIXED_USER_EMAIL, FIXED_USER_PASSWORD)
+
+    assert home.esta_logado()
+
+    return home
+
+@pytest.fixture
+def products_page(logged_home_page):
+    logged_home_page.ir_para_produtos()
+    return ProductPage(logged_home_page.page)

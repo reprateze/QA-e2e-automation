@@ -11,12 +11,12 @@ class TestLogin:
     home = homePage(login_page.page)
     assert home.esta_logado()
 
-@pytest.mark.parametrize("email, senha", [
-    ("", "algumasenha"),
-    ("algum@email.com", ""),
-    ("", ""),
-])
-def test_login_campos_vazios(self, login_page, email, senha):
-    login_page.login(email, senha)
-    home = homePage(login_page.page)
-    assert not home.esta_logado()
+    @pytest.mark.parametrize("email, senha", [
+        ("", "algumasenha"),
+        ("algum@email.com", ""),
+        ("", ""),
+    ])
+    def test_login_campos_vazios(self, login_page, email, senha):
+        login_page.login(email, senha)
+        home = homePage(login_page.page)
+        assert not home.esta_logado()
