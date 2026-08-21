@@ -3,8 +3,9 @@ import os
 import pytest
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
-
-from pages.Home_page import HomePage
+from utils.data_loader import carregar_json
+from pages.home_page import HomePage
+from pages.signup_page import SignupPage
 
 
 load_dotenv()
@@ -32,5 +33,14 @@ def home_page(page):
     home.goto("/")
     return home
 
+@pytest.fixture
+def signup_page(page):
+    signup = SignupPage(page)
+    signup.goto("/login")
+    return signup
+
+@pytest.fixture
+def dados_cadastro():
+    return carregar_json("cadastro.json")
     
 

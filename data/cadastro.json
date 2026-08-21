@@ -1,0 +1,16 @@
+{
+  "titulo": "Mr",
+  "nome": "Renan",
+  "sobrenome": "Teste",
+  "senha": "SenhaForte123",
+  "dia_nascimento": "15",
+  "mes_nascimento": "6",
+  "ano_nascimento": "1995",
+  "empresa": "Empresa Teste",
+  "endereco": "Rua Exemplo, 123",
+  "pais": "india",
+  "estado": "SP",
+  "cidade": "Sao Paulo",
+  "cep": "01000-000",
+  "telefone": "11999999999"
+}
