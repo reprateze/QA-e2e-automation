@@ -1,4 +1,5 @@
 import os
+import uuid
 
 import pytest
 from dotenv import load_dotenv
@@ -42,5 +43,10 @@ def signup_page(page):
 @pytest.fixture
 def dados_cadastro():
     return carregar_json("cadastro.json")
+
+@pytest.fixture
+def email_unico():
+    email = f"renan.teste.{uuid.uuid4().hex[:8]}@example.com"
+    return email
     
 

@@ -22,6 +22,7 @@ class SignupPage(BasePage):
     ZIP_INPUT = "#zipcode"
     MOBILE_INPUT = "#mobile_number"
     CREATE_ACCOUNT_BUTTON = "[data-qa='create-account']"
+    CONTINUE_BUTTON_TEXT = "Continue"
 
     def registro(self, username: str, email: str):
         self.fill(self.USERNAME_INPUT, username)
@@ -51,3 +52,11 @@ class SignupPage(BasePage):
 
     def cadastro_realizado_com_sucesso(self) -> bool:
         return self.page.get_by_text("ACCOUNT CREATED").is_visible()
+
+    def email_ja_cadastrado_visivel(self) -> bool:
+        locator = self.page.get_by_text("Email Address already exist!")
+        locator.wait_for(state="visible", timeout=5000)
+        return locator.is_visible()
+
+    def continuar(self):
+        self.page.get_by_role("link", name=self.CONTINUE_BUTTON_TEXT).click()
