@@ -73,3 +73,9 @@ def logged_home_page(page):
 def products_page(logged_home_page):
     logged_home_page.ir_para_produtos()
     return ProductPage(logged_home_page.page)
+
+@pytest.fixture
+def product_details_page(products_page):
+    products_page.acessar_detalhes_produto(1)
+    assert products_page.pagina_detalhes_visivel()
+    return products_page
