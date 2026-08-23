@@ -18,7 +18,7 @@ class TestProduct():
         products_page.pesquisar("Blue Top")
 
         produtos = products_page.get_produtos_nome()
-
+        
         assert produtos
         assert all("Blue Top" in produto for produto in produtos)
 

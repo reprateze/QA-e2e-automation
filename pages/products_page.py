@@ -36,6 +36,7 @@ class ProductPage(BasePage):
         self.click(self.SUBMIT_SEARCH)
 
     def get_produtos_nome(self):
+        self.page.locator(self.PRODUCT_NAMES).first.wait_for(state="visible")
         return self.page.locator(self.PRODUCT_NAMES).all_text_contents()
 
     def acessar_detalhes_produto(self, produto_id: int):
@@ -60,6 +61,11 @@ class ProductPage(BasePage):
         self.click(self.REVIEW_BUTTON)
 
     def review_enviada_com_sucesso(self) -> bool:
-        return self.page.get_by_text("Thank you for your review.").is_visible()
+        try:
+            self.page.get_by_text("Thank you for your review.").wait_for(state="visible", timeout=5000)
+            return True
+        except TimeoutError:
+      
+            return False
 
         
