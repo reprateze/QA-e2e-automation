@@ -5,12 +5,14 @@ pytestmark = pytest.mark.ui
 from utils.config import FIXED_USER_EMAIL, FIXED_USER_PASSWORD
 
 class TestLogin:
+   @pytest.mark.smoke
    def test_login_com_sucesso(self, login_page):
     login_page.login(FIXED_USER_EMAIL, FIXED_USER_PASSWORD)
 
     home = homePage(login_page.page)
     assert home.esta_logado()
 
+    @pytest.mark.regression
     @pytest.mark.parametrize("email, senha", [
         ("", "algumasenha"),
         ("algum@email.com", ""),
