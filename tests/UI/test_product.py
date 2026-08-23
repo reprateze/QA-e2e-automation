@@ -6,7 +6,7 @@ class TestProduct():
 
     @pytest.mark.regression
     def test_pagina_visivel(self, products_page):
-        assert products_page.pagina_visivel()
+       assert products_page.pagina_visivel("/products")
 
     @pytest.mark.smoke
     def test_adicionar_produto_ao_carrinho(self, products_page):

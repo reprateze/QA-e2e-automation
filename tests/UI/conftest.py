@@ -10,6 +10,7 @@ from pages.signup_page import SignupPage
 from pages.login_page import LoginPage
 from utils.config import FIXED_USER_EMAIL, FIXED_USER_PASSWORD
 from pages.products_page import ProductPage
+from pages.cart_page import CartPage
 
 load_dotenv()
 
@@ -79,3 +80,17 @@ def product_details_page(products_page):
     products_page.acessar_detalhes_produto(1)
     assert products_page.pagina_detalhes_visivel()
     return products_page
+
+@pytest.fixture
+def cart_page(products_page):
+    home = homePage(products_page.page)
+    home.ir_para_cart()
+
+    cart = CartPage(products_page.page)
+    cart.remover_todos_produtos()
+
+    home.ir_para_produtos()
+    products_page.adicionar_produto_ao_carrinho("Blue Top")
+
+    home.ir_para_cart()
+    return cart

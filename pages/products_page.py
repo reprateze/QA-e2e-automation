@@ -14,9 +14,6 @@ class ProductPage(BasePage):
     REVIEW_INPUT = "#review"
     REVIEW_BUTTON = "#button-review"
 
-
-    def pagina_visivel(self) -> bool:
-        return self.page.url.endswith("/products")
       
     def adicionar_produto_ao_carrinho(self, nome_produto: str):
         produto = self.page.locator(".productinfo").filter(has_text=nome_produto)
