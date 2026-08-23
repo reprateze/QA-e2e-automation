@@ -17,4 +17,7 @@ class BasePage:
 
     def click(self, seletor: str):
         self.page.click(seletor)
+
+    def pagina_visivel(self, caminho: str) -> bool:
+     return self.page.url.endswith(caminho)
         
