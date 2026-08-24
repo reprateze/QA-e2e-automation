@@ -78,7 +78,7 @@ def products_page(logged_home_page):
 @pytest.fixture
 def product_details_page(products_page):
     products_page.acessar_detalhes_produto(1)
-    assert products_page.pagina_detalhes_visivel()
+    assert products_page.pagina_visivel("/product_details/")
     return products_page
 
 @pytest.fixture

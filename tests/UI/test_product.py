@@ -24,11 +24,11 @@ class TestProduct():
 
     @pytest.mark.regression
     def test_acessar_detalhes_produto(self, products_page):
-        assert products_page.pagina_visivel()
+        assert products_page.pagina_visivel("/products")
 
         products_page.acessar_detalhes_produto(1)
 
-        assert products_page.pagina_detalhes_visivel()
+        assert products_page.pagina_visivel("/product_details/")
 
     @pytest.mark.regression
     @pytest.mark.parametrize("quantidade", [1, 2, 10, 50, 100])

@@ -1,3 +1,5 @@
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
 class BasePage:
 
     def __init__(self, page):
@@ -18,6 +20,10 @@ class BasePage:
     def click(self, seletor: str):
         self.page.click(seletor)
 
-    def pagina_visivel(self, caminho: str) -> bool:
-     return self.page.url.endswith(caminho)
+    def pagina_visivel(self, padrao_url: str) -> bool:
+        try:
+            self.page.wait_for_url(f"**{padrao_url}**", timeout=5000)
+            return True
+        except PlaywrightTimeoutError:
+            return False
         
