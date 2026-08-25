@@ -5,3 +5,4 @@ __pycache__/
 reports/*
 !reports/.gitkeep
 .pytest_cache/
+results.xml
