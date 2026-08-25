@@ -39,9 +39,6 @@ class ProductPage(BasePage):
     def acessar_detalhes_produto(self, produto_id: int):
         self.page.locator(f"a[href='/product_details/{produto_id}']").click()
 
-    def pagina_detalhes_visivel(self) -> bool:
-        return "/product_details/" in self.page.url
-
     def pagina_detalhes_adicionar_produto(self):
         self.click(self.ADD_PRODUTO_DETAILS)
 
@@ -64,5 +61,7 @@ class ProductPage(BasePage):
         except TimeoutError:
       
             return False
+
+    
 
         
