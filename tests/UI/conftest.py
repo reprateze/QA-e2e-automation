@@ -94,7 +94,7 @@ def cart_page(products_page):
     home.ir_para_produtos()
     products_page.adicionar_produto_ao_carrinho("Blue Top")
 
-    products_page.page.locator("button.close-modal").click()
+    products_page.fechar_modal_adicionado()
 
     home.ir_para_cart()
     return cart

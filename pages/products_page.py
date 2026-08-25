@@ -13,6 +13,7 @@ class ProductPage(BasePage):
     EMAIL_INPUT = "#email"    
     REVIEW_INPUT = "#review"
     REVIEW_BUTTON = "#button-review"
+    FECHAR_MODAL = "button.close-modal"
 
       
     def adicionar_produto_ao_carrinho(self, nome_produto: str):
@@ -61,7 +62,9 @@ class ProductPage(BasePage):
         except TimeoutError:
       
             return False
-
+        
+    def fechar_modal_adicionado(self):
+        self.click(self.FECHAR_MODAL)
     
 
         
