@@ -12,5 +12,7 @@
   "estado": "SP",
   "cidade": "Sao Paulo",
   "cep": "01000-000",
-  "telefone": "11999999999"
+  "telefone": "11999999999",
+  "mensagem_pedido": "Por favor, deixar na portaria. Cuidado, frágil!"
+  
 }

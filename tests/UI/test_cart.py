@@ -14,4 +14,6 @@ class TestCart():
 
    def test_totais_batem(self, cart_page):
       assert cart_page.totais_batem()
+
+
    

@@ -1,6 +1,10 @@
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
 class BasePage:
+        
+    CART_PRECO = ".cart_price"
+    CART_QUANTIDADE = ".cart_quantity"
+    CART_TOTAL = ".cart_total_price"
 
     def __init__(self, page):
         self.page = page
@@ -26,4 +30,27 @@ class BasePage:
             return True
         except PlaywrightTimeoutError:
             return False
+        
+    def _extrair_valor(self, texto: str) -> float:
+        texto_limpo = texto.replace("Rs.", "").strip()
+        return float(texto_limpo)
+
+    def totais_batem(self) -> bool:
+        linhas = self.page.locator("#cart_info_table tbody tr")
+    
+        for i in range(linhas.count()):
+            linha = linhas.nth(i)
+        
+            preco_texto = linha.locator(self.CART_PRECO).inner_text()
+            quantidade_texto = linha.locator(self.CART_QUANTIDADE).inner_text()
+            total_texto = linha.locator(self.CART_TOTAL).inner_text()
+
+            preco = self._extrair_valor(preco_texto)
+            quantidade = int(quantidade_texto)
+            total_exibido = self._extrair_valor(total_texto)
+
+            if preco * quantidade != total_exibido:
+                return False
+
+        return True
         

@@ -11,6 +11,8 @@ from pages.login_page import LoginPage
 from utils.config import FIXED_USER_EMAIL, FIXED_USER_PASSWORD
 from pages.products_page import ProductPage
 from pages.cart_page import CartPage
+from pages.checkout_page import CheckoutPage
+from pages.payment_page import PaymentPage
 
 load_dotenv()
 
@@ -92,5 +94,25 @@ def cart_page(products_page):
     home.ir_para_produtos()
     products_page.adicionar_produto_ao_carrinho("Blue Top")
 
+    products_page.page.locator("button.close-modal").click()
+
     home.ir_para_cart()
     return cart
+
+@pytest.fixture
+def checkout_page(cart_page):
+    cart_page.ir_para_checkout()
+    return CheckoutPage(cart_page.page)
+
+@pytest.fixture
+def payment_page(checkout_page):
+    checkout_page.finalizar_checkout()
+    return PaymentPage(checkout_page.page)
+    
+
+
+
+
+
+    
+

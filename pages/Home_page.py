@@ -14,7 +14,15 @@ class homePage(BasePage):
         self.page.get_by_role("link", name=self.LOGOUT_LINK_TEXT).click()
 
     def esta_logado(self) -> bool:
-        return self.page.get_by_role("link", name=self.LOGOUT_LINK_TEXT).is_visible()
+   
+        link_logout = self.page.get_by_role("link", name=self.LOGOUT_LINK_TEXT)
+    
+        try:
+            link_logout.wait_for(state="visible", timeout=10000)
+            return True
+        
+        except Exception:
+            return False
 
     def ir_para_produtos(self):
         self.page.get_by_role("link", name=self.PRODUCTS_LINK_TEXT).click()
