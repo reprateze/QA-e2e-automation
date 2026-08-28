@@ -18,3 +18,8 @@ class BaseClient:
         kwargs.setdefault("timeout", self.DEFAULT_TIMEOUT)
         url = f"{self.base_url}{endpoint}"
         return self.session.post(url, data=data, json=json, **kwargs)
+
+    def put(self, endpoint, data=None, json=None, **kwargs):
+        kwargs.setdefault("timeout", self.DEFAULT_TIMEOUT)
+        url = f"{self.base_url}{endpoint}"
+        return self.session.put(url, data=data, json=json, **kwargs)

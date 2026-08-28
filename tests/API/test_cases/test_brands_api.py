@@ -19,4 +19,19 @@ class TestBrandsAPI:
         assert isinstance(brand["id"], int)
         assert isinstance(brand["brand"], str)
 
+
+    def test_put_todas_marcas(self, brands_api):
+       def test_put_todas_marcas(self, brands_api):
+        response = brands_api.put_todas_marcas()
+        body = response.json()
+
+        # Valida que o protocolo web retorna 200 
+        assert response.status_code == 200
+        
+        # Valida que a regra de negócio da API mandou o "405" no body
+        assert body["responseCode"] == 405
+        assert body["message"] == "This request method is not supported."
+
+        #Basicamente, o protocolo web deu sucesso (200), mas a regra de negócio da aplicação deu erro (405).
+
         

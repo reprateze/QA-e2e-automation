@@ -43,14 +43,22 @@ class TestProductsAPI:
             f"Esperado: >= {total_minimo_esperado}, "
             f"Retornado: {len(data['products'])}"
         )
+
+    def test_post_pesquise_produtos_sem_parametro(self, products_api):
+        response = products_api.pesquisa_produto_sem_parametro() 
+        data = response.json()
+
+        assert response.status_code == 200 
+        
+        assert data["responseCode"] == 400
+        assert data["message"] == "Bad request, search_product parameter is missing in POST request."
         
 
     def test_post_todos_produtos(self, products_api):
         response = products_api.post_all_products_list()
-
-        assert response.status_code == 405
-
         body = response.json()
+
+        assert response.status_code == 200
 
         assert body["responseCode"] == 405
         assert body ["message"] == "This request method is not supported."

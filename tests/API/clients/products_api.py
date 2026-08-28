@@ -15,3 +15,6 @@ class ProductsAPI(BaseClient):
 
     def post_all_products_list(self):
         return self.post("/productsList")
+
+    def pesquisa_produto_sem_parametro(self):
+        return self.post("/searchProduct")
