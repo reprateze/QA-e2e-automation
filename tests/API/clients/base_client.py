@@ -1,6 +1,6 @@
-
 import requests
-from utils.config import API_BASE_URL  
+from utils.config import API_BASE_URL
+
 
 class BaseClient:
     DEFAULT_TIMEOUT = 10
@@ -23,3 +23,8 @@ class BaseClient:
         kwargs.setdefault("timeout", self.DEFAULT_TIMEOUT)
         url = f"{self.base_url}{endpoint}"
         return self.session.put(url, data=data, json=json, **kwargs)
+
+    def delete(self, endpoint, **kwargs):
+        kwargs.setdefault("timeout", self.DEFAULT_TIMEOUT)
+        url = f"{self.base_url}{endpoint}"
+        return self.session.delete(url, **kwargs)
