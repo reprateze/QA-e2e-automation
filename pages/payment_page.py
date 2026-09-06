@@ -1,6 +1,9 @@
-from pages.base_page import BasePage
 import re
+
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
+from pages.base_page import BasePage
+
 
 class  PaymentPage(BasePage):
 

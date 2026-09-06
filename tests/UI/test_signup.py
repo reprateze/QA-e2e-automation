@@ -1,5 +1,7 @@
 import pytest
+
 from pages.home_page import homePage
+
 pytestmark = pytest.mark.ui
 
 class TestSignup:

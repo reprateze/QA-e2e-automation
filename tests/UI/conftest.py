@@ -4,15 +4,16 @@ import uuid
 import pytest
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
-from utils.data_loader import carregar_json
-from pages.home_page import homePage
-from pages.signup_page import SignupPage
-from pages.login_page import LoginPage
-from utils.config import FIXED_USER_EMAIL, FIXED_USER_PASSWORD
-from pages.products_page import ProductPage
+
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
+from pages.home_page import homePage
+from pages.login_page import LoginPage
 from pages.payment_page import PaymentPage
+from pages.products_page import ProductPage
+from pages.signup_page import SignupPage
+from utils.config import FIXED_USER_EMAIL, FIXED_USER_PASSWORD
+from utils.data_loader import carregar_json
 
 load_dotenv()
 
@@ -62,6 +63,11 @@ def login_page(page):
     
 @pytest.fixture
 def logged_home_page(page):
+    if not FIXED_USER_EMAIL or not FIXED_USER_PASSWORD:
+        pytest.skip(
+            "FIXED_USER_EMAIL/FIXED_USER_PASSWORD não configurados no .env"
+        )
+
     home = homePage(page)
     home.goto("/login")
 

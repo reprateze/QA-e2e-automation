@@ -1,8 +1,8 @@
 import pytest
-from pages.home_page import homePage
+
 pytestmark = pytest.mark.ui
 
-class TestCheckout():
+class TestCheckout:
 
     def test_pagina_visivel(self, checkout_page):
         assert checkout_page.pagina_visivel("/checkout")

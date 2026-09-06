@@ -1,7 +1,8 @@
 import pytest
+
 pytestmark = pytest.mark.ui
 
-class TestPayment():
+class TestPayment:
 
     def test_realizar_pagamento_com_sucesso(self, payment_page):
         payment_page.preencher_dados_cartao(

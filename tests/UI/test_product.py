@@ -1,8 +1,8 @@
 import pytest
-from pages.home_page import homePage
+
 pytestmark = pytest.mark.ui
 
-class TestProduct():
+class TestProduct:
 
     @pytest.mark.regression
     def test_pagina_visivel(self, products_page):

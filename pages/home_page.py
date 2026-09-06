@@ -1,4 +1,7 @@
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
 from pages.base_page import BasePage
+
 
 class homePage(BasePage):
 
@@ -21,7 +24,7 @@ class homePage(BasePage):
             link_logout.wait_for(state="visible", timeout=10000)
             return True
         
-        except Exception:
+        except PlaywrightTimeoutError:
             return False
 
     def ir_para_produtos(self):
