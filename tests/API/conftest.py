@@ -1,9 +1,9 @@
 import pytest
 
-from tests.API.clients.products_api import ProductsAPI
 from tests.API.clients.brands_api import BrandsAPI
-from tests.API.payloads.users_payload import gerar_payload_usuario_teste
+from tests.API.clients.products_api import ProductsAPI
 from tests.API.clients.users_api import UsersAPI
+from tests.API.payloads.users_payload import gerar_payload_usuario_teste
 
 
 @pytest.fixture
