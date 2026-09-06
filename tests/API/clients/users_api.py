@@ -27,6 +27,3 @@ class UsersAPI(BaseClient):
 
     def buscar_por_email(self,email):
         return self.get("/getUserDetailByEmail", params={"email": email})
-
-    def deletar_conta(self,email, password):
-        return self.delete("/deleteAccount", data={"email":email, "password":password})
