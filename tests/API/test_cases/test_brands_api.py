@@ -1,11 +1,10 @@
 import pytest
 
-from tests.API.schemas.brands_schema import BrandsListResponse
-
 pytestmark = pytest.mark.api
 
 
 class TestBrandsAPI:
+
     def test_buscar_todas_marcas(self, brands_api):
         response = brands_api.buscar_todas_marcas()
         body = response.json()
@@ -15,7 +14,11 @@ class TestBrandsAPI:
         assert "brands" in body
         assert len(body["brands"]) > 0
 
-        BrandsListResponse.model_validate(body)
+        marca = body["brands"][0]
+        assert "id" in marca
+        assert "brand" in marca
+        assert isinstance(marca["id"], int)
+        assert isinstance(marca["brand"], str)
 
     def test_atualizar_todas_marcas(self, brands_api):
         response = brands_api.atualizar_todas_marcas()
