@@ -4,3 +4,4 @@ pytest-playwright
 pytest-html
 python-dotenv
 PyYAML
+pydantic
