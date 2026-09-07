@@ -5,3 +5,4 @@ pytest-html
 python-dotenv
 PyYAML
 pydantic
+ruff
