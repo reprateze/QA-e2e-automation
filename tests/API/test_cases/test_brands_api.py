@@ -6,6 +6,7 @@ pytestmark = pytest.mark.api
 
 
 class TestBrandsAPI:
+    @pytest.mark.smoke
     def test_buscar_todas_marcas(self, brands_api):
         response = brands_api.buscar_todas_marcas()
         body = response.json()
@@ -17,6 +18,7 @@ class TestBrandsAPI:
 
         BrandsListResponse.model_validate(body)
 
+    @pytest.mark.regression
     def test_atualizar_todas_marcas(self, brands_api):
         response = brands_api.atualizar_todas_marcas()
         body = response.json()
