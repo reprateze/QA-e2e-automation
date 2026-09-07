@@ -1,5 +1,8 @@
 playwright
 pytest
 pytest-playwright
+pytest-html
 python-dotenv
 PyYAML
+pydantic
+ruff

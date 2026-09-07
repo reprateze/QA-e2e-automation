@@ -1,5 +1,6 @@
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
+
 class BasePage:
         
     CART_PRECO = ".cart_price"

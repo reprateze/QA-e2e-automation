@@ -1,16 +1,23 @@
 import pytest
+
 from pages.home_page import homePage
+
 pytestmark = pytest.mark.ui
 
 from utils.config import FIXED_USER_EMAIL, FIXED_USER_PASSWORD
 
-class TestLogin:
-   @pytest.mark.smoke
-   def test_login_com_sucesso(self, login_page):
-    login_page.login(FIXED_USER_EMAIL, FIXED_USER_PASSWORD)
 
-    home = homePage(login_page.page)
-    assert home.esta_logado()
+class TestLogin:
+    @pytest.mark.smoke
+    def test_login_com_sucesso(self, login_page):
+        if not FIXED_USER_EMAIL or not FIXED_USER_PASSWORD:
+            pytest.skip(
+                "FIXED_USER_EMAIL/FIXED_USER_PASSWORD não configurados no .env"
+            )
+        login_page.login(FIXED_USER_EMAIL, FIXED_USER_PASSWORD)
+
+        home = homePage(login_page.page)
+        assert home.esta_logado()
 
     @pytest.mark.regression
     @pytest.mark.parametrize("email, senha", [

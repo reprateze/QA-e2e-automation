@@ -1,4 +1,5 @@
 import requests
+
 from utils.config import API_BASE_URL
 
 

@@ -1,5 +1,6 @@
 from pages.base_page import BasePage
 
+
 class CartPage(BasePage):
 
     CART_PRODUCT_NAMES = ".cart_description h4"
