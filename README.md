@@ -4,6 +4,14 @@ Projeto de testes automatizados (UI + API) para o site [automationexercise.com](
 usando **Playwright + Python + pytest** para UI (padrão **Page Object Model**) e **requests + Pydantic** para API
 (validação de contrato/schema das respostas).
 
+## Contribuições e uso de IA
+
+Durante o desenvolvimento deste projeto, ferramentas de Inteligência Artificial foram utilizadas como apoio para análise, investigação e resolução de bugs, além de auxiliar na revisão e melhoria do código.
+
+A IA foi utilizada como ferramenta de suporte, enquanto a implementação, validação e decisões finais sobre o código foram realizadas pelo autor.
+
+Um dos exemplos foi a utilização de IA para auxiliar na investigação e resolução de um bug encontrado durante o desenvolvimento dos testes automatizados.
+
 ## Stack
 
 - [Playwright](https://playwright.dev/python/) — automação de navegador
